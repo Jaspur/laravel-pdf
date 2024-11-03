@@ -1,3 +1,5 @@
+# STRIPED OF UNUSED FONTS
+
 # Laravel PDF: mPDF wrapper for Laravel
 
 > Easily generate PDF documents from HTML right inside of Laravel using this mPDF wrapper.
@@ -87,12 +89,13 @@ PDF::loadView('pdf', $data, [], [
 ```
 
 You can use a callback with the key 'instanceConfigurator' to access mpdf functions:
+
 ```php
 $config = ['instanceConfigurator' => function($mpdf) {
     $mpdf->SetImportUse();
     $mpdf->SetDocTemplate(/path/example.pdf, true);
 }]
- 
+
 PDF::loadView('pdf', $data, [], $config)->save($pdfFilePath);
 ```
 
@@ -101,21 +104,17 @@ PDF::loadView('pdf', $data, [], $config)->save($pdfFilePath);
 If you want to have headers and footers that appear on every page, add them to your `<body>` tag like this:
 
 ```html
-<htmlpageheader name="page-header">
-	Your Header Content
-</htmlpageheader>
+<htmlpageheader name="page-header"> Your Header Content </htmlpageheader>
 
-<htmlpagefooter name="page-footer">
-	Your Footer Content
-</htmlpagefooter>
+<htmlpagefooter name="page-footer"> Your Footer Content </htmlpagefooter>
 ```
 
 Now you just need to define them with the name attribute in your CSS:
 
 ```css
 @page {
-	header: page-header;
-	footer: page-footer;
+  header: page-header;
+  footer: page-footer;
 }
 ```
 
@@ -148,17 +147,18 @@ return [
 ];
 ```
 
-*Note*: If you are using `laravel-pdf` for producing PDF documents in a complicated language (like Persian, Arabic or Chinese) you should have `useOTL` and `useKashida` indexes in your custom font definition array. If you do not use these indexes, your characters will be shown dispatched and incorrectly in the produced PDF.
+_Note_: If you are using `laravel-pdf` for producing PDF documents in a complicated language (like Persian, Arabic or Chinese) you should have `useOTL` and `useKashida` indexes in your custom font definition array. If you do not use these indexes, your characters will be shown dispatched and incorrectly in the produced PDF.
 
 Now you can use the font in CSS:
 
 ```css
 body {
-	font-family: 'examplefont', sans-serif;
+  font-family: "examplefont", sans-serif;
 }
 ```
 
 ## Custom Styles
+
 You can use your own styles in the generated PDFs. The css file have to be located in one folder, e.g. `/public/css/`. Add this to your configuration file (`/config/pdf.php`):
 
 ```php
